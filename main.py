@@ -8,7 +8,15 @@ def addEmployeeHours():
 def showHoursWorkedReport():
     print("Hours Worked Report")
     print("~~~~~~~~~~~~~~~~~~~")
-    print()
+    employeeName = input("Full Name: ")
+    employeeID = input("Employee Number: ")
+    print("Please enter the whole number of hours you've worked for each of the following days")
+    monHours = input("Enter the number of hours worked on Monday: ")
+    tueHours = input("Enter the number of hours worked on Tuesday: ")
+    wedHours = input("Enter the number of hours worked on Wednesday: ")
+    thurHours = input("Enter the number of hours worked on Thursday:")
+    friHours = input("Enter the number of hours worked on Friday:")
+
 
 #Main Menu
 #Show program title

@@ -1,11 +1,15 @@
 # Employee Work from home tracker - By Ashton Southall
 
+# Import CSV library
+import csv
+
 def addEmployeeHours():
     print("Add Employee Hours")
     print("~~~~~~~~~~~~~~~~~~")
     print()
     employeeName = input("Full Name: ")
     employeeID = input("Employee Number: ")
+    workingWeek = input("Working week: ")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("Please enter the whole number of hours you've worked for each of the following days")
     print()
@@ -14,6 +18,11 @@ def addEmployeeHours():
     wedHours = input("Enter the number of hours worked on Wednesday: ")
     thurHours = input("Enter the number of hours worked on Thursday:")
     friHours = input("Enter the number of hours worked on Friday:")
+
+    # Open CSV file to write/Append data
+    with open("reports/" + employeeID + ".csv", "a") as data:
+	    writer = csv.writer(data)
+	    writer.writerow([workingWeek, employeeName, employeeID, monHours, tueHours, wedHours, thurHours, friHours])
 
 def showHoursWorkedReport():
     print("Hours Worked Report")

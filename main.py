@@ -35,11 +35,9 @@ while (choice !=3):
     # Check user choice
     
     if (choice == 1):
-        print("Selected: 1")
+        addEmployeeHours()
     elif (choice == 2):
-        print("selected 2")
-    elif (choice == 3):
-        print("Selected 3")
+        showHoursWorkedReport()
     else:
         print("Please input only one of the 3 options. (1, 2 or 3)")
     

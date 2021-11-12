@@ -27,7 +27,16 @@ def addEmployeeHours():
 def showHoursWorkedReport():
     print("Hours Worked Report")
     print("~~~~~~~~~~~~~~~~~~~")
-    
+    employeeID = input("Employee ID: ")
+    weekReportToShow = input("Work week to display: ")
+    with open("reports/" + employeeID + ".csv", "r") as data:
+        reader = csv.reader(data)
+        for row in reader:
+            print()
+            print("~~~~~~~~~~~~~~~~~~~")
+            print()
+            # Print correct row containg report info for the requested week
+
 
 
 #Main Menu
@@ -51,6 +60,7 @@ while (choice !=3):
 
     # Get option
     choice = int(input("Please enter selection: "))
+    print()
 
     # Check user choice
     

@@ -1,6 +1,6 @@
 # Employee Work from home tracker - By Ashton Southall
 # Project Styling array, this is called by the script to generate titles and styling throughout the program (0 = program title, 1 = long divider, 2 = medium divider, 3 = short divider)
-styleGuide = ["---------------------------------------------\nWelcome to the Work From Home Tracker\nDiamond Realty\n---------------------------------------------", "~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~"]
+styleGuide = ["---------------------------------------------\n    Welcome to the Work From Home Tracker\n              Diamond Realty\n---------------------------------------------", "~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~"]
 # Working hour guidelines, Contains mininum hours, maximum hours etc. used to compare worked hours with what the employee is supposed to work
 lowest = 4 # Employee working less than 4 hours
 high = 10 # Employee working more than 10 hours
@@ -44,18 +44,35 @@ def checkWorkedHours(monday, tuesday, wednesday, thursday, friday): # Gather ins
 def addEmployeeHours():
     print("Add Employee Hours")
     print(styleGuide[2])
+    print("Hint: Leave any input fiend blank to cancel creating and return to the main menu")
     print()
     employeeName = input("Full Name: ")
+    if employeeName == "":
+        return
     employeeID = input("Employee Number: ")
+    if employeeID == "":
+        return
     workingWeek = input("Working week: ")
+    if workingWeek == "":
+        return
     print(styleGuide[2])
     print("Please enter the whole number of hours you've worked for each of the following days")
     print()
     monHours = input("Enter the number of hours worked on Monday: ")
+    if monHours == "":
+        return
     tueHours = input("Enter the number of hours worked on Tuesday: ")
+    if tueHours == "":
+        return
     wedHours = input("Enter the number of hours worked on Wednesday: ")
+    if wedHours == "":
+        return
     thurHours = input("Enter the number of hours worked on Thursday: ")
+    if thurHours == "":
+        return
     friHours = input("Enter the number of hours worked on Friday: ")
+    if friHours == "":
+        return
     with open("reports/" + employeeID + ".csv", "a") as data: # Open CSV file to write/Append data using employeeID as filename
 	    writer = csv.writer(data)
 	    writer.writerow([workingWeek, employeeName, employeeID, monHours, tueHours, wedHours, thurHours, friHours]) # Write data to CSV file
@@ -66,7 +83,11 @@ def showHoursWorkedReport():
     print(styleGuide[1])
     # Gather Employee ID and week number to generate report from
     employeeID = input("Employee ID: ")
+    if employeeID == "":
+        return
     weekReportToShow = input("Work week to display: ")
+    if weekReportToShow == "":
+        return
     hourList = []
     # Open CSV file in read mode
     with open("reports/" + employeeID + ".csv", "r") as data:

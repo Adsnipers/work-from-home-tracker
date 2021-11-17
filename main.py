@@ -91,6 +91,8 @@ def addEmployeeHours():
     with open("reports/" + employeeID + ".csv", "a") as data: # Open CSV file to write/Append data using employeeID as filename
 	    writer = csv.writer(data)
 	    writer.writerow([workingWeek, employeeName, employeeID, monHours, tueHours, wedHours, thurHours, friHours]) # Write data to CSV file
+    print()
+    print(styleGuide[3])
     checkWorkedHours(monHours,tueHours,wedHours,thurHours,friHours)
 
 def showHoursWorkedReport():

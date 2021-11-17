@@ -61,17 +61,32 @@ def addEmployeeHours():
     monHours = input("Enter the number of hours worked on Monday: ")
     if monHours == "":
         return
+    elif int(monHours) > 24:
+        print("Cannot enter more than 24 hours in one day")
+        return
     tueHours = input("Enter the number of hours worked on Tuesday: ")
     if tueHours == "":
+        return
+    elif int(tueHours) > 24:
+        print("Cannot enter more than 24 hours in one day")
         return
     wedHours = input("Enter the number of hours worked on Wednesday: ")
     if wedHours == "":
         return
+    elif int(wedHours) > 24:
+        print("Cannot enter more than 24 hours in one day")
+        return
     thurHours = input("Enter the number of hours worked on Thursday: ")
     if thurHours == "":
         return
+    elif int(thurHours) > 24:
+        print("Cannot enter more than 24 hours in one day")
+        return
     friHours = input("Enter the number of hours worked on Friday: ")
     if friHours == "":
+        return
+    elif int(friHours) > 24:
+        print("Cannot enter more than 24 hours in one day")
         return
     with open("reports/" + employeeID + ".csv", "a") as data: # Open CSV file to write/Append data using employeeID as filename
 	    writer = csv.writer(data)
@@ -125,6 +140,8 @@ print(styleGuide[0])
 choice = 1
 while (choice !=3):
     # Display menu of options
+    print(styleGuide[1])
+    print()
     print("Please select one of the following options to continue")
     print("1. Enter hours")
     print("2. Produce Report")

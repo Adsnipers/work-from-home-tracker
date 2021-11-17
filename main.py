@@ -10,10 +10,12 @@ highest = 30 # Employee working more than 30 hours
 # Import CSV library
 import csv
 
-def checkWorkedHours(monday, tuesday, wednesday, thursday, friday): # Gather inserted hours worked to be checked and display appropriate messages depending on whether the employee worked too many or not enough hours
+# Gather inserted hours worked to be checked and display appropriate messages depending on whether the employee worked too many or not enough hours
+def checkWorkedHours(monday, tuesday, wednesday, thursday, friday): 
     weekdays = [monday,tuesday,wednesday,thursday,friday]
-    weekdayint = 5
-    for i in weekdays:
+    weekdayint = 5 # Start week at 5 (Friday)
+    # Run for every day of the week, remove 1 from weekdayint every time to calculate the day of the week for output to the user
+    for i in weekdays: 
         if weekdayint == 5:
             weekday = "Monday"
             weekdayint = weekdayint - 1
@@ -29,6 +31,7 @@ def checkWorkedHours(monday, tuesday, wednesday, thursday, friday): # Gather ins
         elif weekdayint == 1:
             weekday = "Friday"
             weekdayint = weekdayint - 1
+        # If the employee worked more or less than the number of hours specified, display appropriate messages. values for lowest, high, higher and highest are retrived from the beginning of the script
         if int(i) >= highest:
             print ("WARNING: Employee worked equal to or more than " + str(highest) + " hours on " + weekday)
         elif int(i) >= higher:
@@ -46,7 +49,8 @@ def addEmployeeHours():
     print(styleGuide[2])
     print("Hint: Leave any input fiend blank to cancel creating and return to the main menu")
     print()
-    employeeName = input("Full Name: ")
+    # Retrive employee information including Full name, Employee ID/Number and the working week to add. 
+    employeeName = input("Full Name: ") 
     if employeeName == "":
         return
     employeeID = input("Employee Number: ")
@@ -58,6 +62,7 @@ def addEmployeeHours():
     print(styleGuide[2])
     print("Please enter the whole number of hours you've worked for each of the following days")
     print()
+    # Get user input for the number of hours worked on each of the corresponding days, checking that the values do not exceed 24 hours worked per day.
     monHours = input("Enter the number of hours worked on Monday: ")
     if monHours == "":
         return
@@ -88,11 +93,13 @@ def addEmployeeHours():
     elif int(friHours) > 24:
         print("Cannot enter more than 24 hours in one day")
         return
-    with open("reports/" + employeeID + ".csv", "a") as data: # Open CSV file to write/Append data using employeeID as filename
-	    writer = csv.writer(data)
+    # Open CSV file to write/Append data using employeeID as filename
+    with open("reports/" + employeeID + ".csv", "a") as data: 
+	    writer = csv.writer(data) # Declare writer object
 	    writer.writerow([workingWeek, employeeName, employeeID, monHours, tueHours, wedHours, thurHours, friHours]) # Write data to CSV file
     print()
     print(styleGuide[3])
+     # Check worked hours with lowest, high, higher and highest values, this will display a report to the user
     checkWorkedHours(monHours,tueHours,wedHours,thurHours,friHours)
 
 def showHoursWorkedReport():
@@ -135,13 +142,10 @@ def showHoursWorkedReport():
                 print(styleGuide[2])
                 print()
             
-# Main Menu | Show program title
-print(styleGuide[0])
-
-# Set menu option variable
-choice = 1
-while (choice !=3):
-    # Display menu of options
+# Main Menu
+print(styleGuide[0]) # Show program title
+choice = 1 # Set menu option variable
+while (choice !=3): # Display menu of options
     print(styleGuide[1])
     print()
     print("Please select one of the following options to continue")
@@ -149,11 +153,9 @@ while (choice !=3):
     print("2. Produce Report")
     print("3. Exit")
     print()
-    # Get option
-    choice = int(input("Please enter selection: "))
+    choice = int(input("Please enter selection: ")) # Get option
     print()
-    # Check user choice
-    if (choice == 1):
+    if (choice == 1): # Check user choice
         addEmployeeHours()
     elif (choice == 2):
         showHoursWorkedReport()

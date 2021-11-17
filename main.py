@@ -1,5 +1,4 @@
 # Employee Work from home tracker - By Ashton Southall
-
 # Project Styling array, this is called by the script to generate titles and styling throughout the program (0 = program title, 1 = long divider, 2 = medium divider, 3 = short divider)
 styleGuide = ["---------------------------------------------\nWelcome to the Work From Home Tracker\nDiamond Realty\n---------------------------------------------", "~~~~~~~~~~~~~~~~~~", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", "~~~~"]
 # Working hour guidelines, Contains mininum hours, maximum hours etc. used to compare worked hours with what the employee is supposed to work
@@ -98,13 +97,11 @@ def showHoursWorkedReport():
                 print(styleGuide[2])
                 print()
             
-#Main Menu
-#Show program title
+# Main Menu | Show program title
 print(styleGuide[0])
 
 # Set menu option variable
 choice = 1
-
 while (choice !=3):
     # Display menu of options
     print("Please select one of the following options to continue")
@@ -112,11 +109,9 @@ while (choice !=3):
     print("2. Produce Report")
     print("3. Exit")
     print()
-
     # Get option
     choice = int(input("Please enter selection: "))
     print()
-
     # Check user choice
     if (choice == 1):
         addEmployeeHours()

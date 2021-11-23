@@ -123,14 +123,12 @@ def showHoursWorkedReport():
             hourList.append(row)
             hourList.reverse()
             # Ask user for number of records to display
-            recordCount = input("Enter the number of records to display or press enter to exit: ")
-            if recordCount == "":
-                return
+            recordCount = 1 # I tried to get rid of this but deleting it broke everything, just hardcoding the variable so the end user has no idea this is a thing
             for i in range(0, int(recordCount)):
                 record = hourList[i]
                 print()
                 print(styleGuide[2])
-                print("Showing " + recordCount + " record(s) for working week " + record[0] + " from " + record[1])
+                print("Showing " + str(recordCount) + " record(s) for working week " + str(record[0]) + " from " + str(record[1]))
                 print(styleGuide[3])
                 # Print correct row containg report info for the requested week
                 print("Employee ID: " + record[2])

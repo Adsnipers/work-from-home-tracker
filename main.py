@@ -15,6 +15,8 @@ def checkWorkedHours(monday, tuesday, wednesday, thursday, friday):
     weekdays = [monday,tuesday,wednesday,thursday,friday]
     weekdayint = 5 # Start week at 5 (Friday)
     # Run for every day of the week, remove 1 from weekdayint every time to calculate the day of the week for output to the user
+     # Calculate total hours worked in the working week
+    TotalHours = int(monday) + int(tuesday) + int(wednesday) + int(thursday) + int(friday)
     for i in weekdays: 
         if weekdayint == 5:
             weekday = "Monday"
@@ -41,6 +43,7 @@ def checkWorkedHours(monday, tuesday, wednesday, thursday, friday):
         elif int(i) <= lowest:
             print ("WARNING: Employee worked equal to or less than " + str(lowest) + " hours on " + weekday)
     print()
+    print("Total hours worked this working week: " + str(TotalHours))
     print(styleGuide[1])
     print()
 

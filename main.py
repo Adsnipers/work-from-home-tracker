@@ -99,7 +99,7 @@ def addEmployeeHours():
     # Open CSV file to write/Append data using employeeID as filename
     with open("reports/" + employeeID + ".csv", "a") as data: 
 	    writer = csv.writer(data) # Declare writer object
-	    writer.writerow([workingWeek, employeeName, employeeID, monHours, tueHours, wedHours, thurHours, friHours]) # Write data to CSV file
+	    writer.writerow([workingWeek, employeeID, employeeName, monHours, tueHours, wedHours, thurHours, friHours]) # Write data to CSV file
     print()
     print(styleGuide[3])
      # Check worked hours with lowest, high, higher and highest values, this will display a report to the user
@@ -128,10 +128,10 @@ def showHoursWorkedReport():
                 record = hourList[i]
                 print()
                 print(styleGuide[2])
-                print("Showing record for working week " + str(record[0]) + " from " + str(record[1]))
+                print("Showing record for working week " + str(record[0]) + " from " + str(record[2]))
                 print(styleGuide[3])
                 # Print correct row containg report info for the requested week
-                print("Employee ID: " + record[2])
+                print("Employee ID: " + record[1])
                 print("Hours worked on Monday: " + record[3])
                 print("Hours worked on Tuesday: " + record[4])
                 print("Hours worked on Wednesday: " + record[5])

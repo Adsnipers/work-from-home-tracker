@@ -11,12 +11,12 @@ highest = 30 # Employee working more than 30 hours
 import csv
 
 # Gather inserted hours worked to be checked and display appropriate messages depending on whether the employee worked too many or not enough hours
-def checkWorkedHours(monday, tuesday, wednesday, thursday, friday): 
+def checkWorkedHours(monday, tuesday, wednesday, thursday, friday, employeeName): 
     weekdays = [monday,tuesday,wednesday,thursday,friday]
     weekdayint = 5 # Start week at 5 (Friday)
     # Run for every day of the week, remove 1 from weekdayint every time to calculate the day of the week for output to the user
      # Calculate total hours worked in the working week
-    TotalHours = int(monday) + int(tuesday) + int(wednesday) + int(thursday) + int(friday)
+    totalHours = int(monday) + int(tuesday) + int(wednesday) + int(thursday) + int(friday)
     for i in weekdays: 
         if weekdayint == 5:
             weekday = "Monday"
@@ -43,7 +43,10 @@ def checkWorkedHours(monday, tuesday, wednesday, thursday, friday):
         elif int(i) <= lowest:
             print ("WARNING: Employee worked equal to or less than " + str(lowest) + " hours on " + weekday)
     print()
-    print("Total hours worked this working week: " + str(TotalHours))
+    print("Total hours worked this working week: " + str(totalHours))
+    with open("reports/totalHours.csv", "a") as data: # Write total hours to CSV file
+        writer = csv.writer(data) # Declare writer object
+        writer.writerow([employeeName, totalHours])
     print(styleGuide[1])
     print()
 
@@ -103,7 +106,7 @@ def addEmployeeHours():
     print()
     print(styleGuide[3])
      # Check worked hours with lowest, high, higher and highest values, this will display a report to the user
-    checkWorkedHours(monHours,tueHours,wedHours,thurHours,friHours)
+    checkWorkedHours(monHours,tueHours,wedHours,thurHours,friHours,employeeName)
 
 def showHoursWorkedReport():
     print("Hours Worked Report")
@@ -138,11 +141,27 @@ def showHoursWorkedReport():
                 print("Hours worked on Thursday: " + record[6])
                 print("Hours worked on Friday: " + record[7])
                 print(styleGuide[3])
-                checkWorkedHours(record[3], record[4], record[5], record[6], record[7])
+                checkWorkedHours(record[3], record[4], record[5], record[6], record[7], record[2])
                 print()
                 print(styleGuide[2])
                 print()
             
+def reportAll():
+    dataList = []
+    print()
+    print(styleGuide[1])
+    print("Displaying full report containing all employee worked hours")
+    print(styleGuide[3])
+    print()
+    with open("reports/totalHours.csv", "r") as report:
+        reader = csv.reader(report)
+        for row in reader:
+            if len(row) > 0:
+                dataList.append(row)
+                for i in dataList:
+                    print(dataList[0][0] + ": " + dataList[0][1] + " Hours")
+                    print()
+
 # Main Menu
 print(styleGuide[0]) # Show program title
 choice = 1 # Set menu option variable
@@ -159,6 +178,10 @@ while (choice !=3): # Display menu of options
     if (choice == 1): # Check user choice
         addEmployeeHours()
     elif (choice == 2):
-        showHoursWorkedReport()
+        subChoice = int(input("Please select one of the following options to continue\n1. Generate report for single employee\n2. Generate report for all employees\n"))
+        if subChoice == 1: # Generate report for single employee
+            showHoursWorkedReport()
+        elif subChoice == 2: # Generate report for all employees
+            reportAll()
     else:
         print("Please input only one of the 3 options. (1, 2 or 3)")

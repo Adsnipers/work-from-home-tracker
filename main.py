@@ -176,12 +176,24 @@ while (choice !=3): # Display menu of options
     choice = int(input("Please enter selection: ")) # Get option
     print()
     if (choice == 1): # Check user choice
-        addEmployeeHours()
+        try:
+            addEmployeeHours()
+        except:
+            print("An error occurred. Please try again")
     elif (choice == 2):
-        subChoice = int(input("Please select one of the following options to continue\n1. Generate report for single employee\n2. Generate report for all employees\n"))
-        if subChoice == 1: # Generate report for single employee
-            showHoursWorkedReport()
-        elif subChoice == 2: # Generate report for all employees
-            reportAll()
+        try:
+            subChoice = int(input("Please select one of the following options to continue\n1. Generate report for single employee\n2. Generate report for all employees\n"))
+            if subChoice == 1: # Generate report for single employee
+                try:
+                    showHoursWorkedReport()
+                except:
+                    print("An error occurred. Please try again")
+            elif subChoice == 2: # Generate report for all employees
+                try:
+                    reportAll()
+                except:
+                    print("An error occurred. Please try again")
+        except:
+            print("An error occurred. Please try again")
     else:
         print("Please input only one of the 3 options. (1, 2 or 3)")

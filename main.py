@@ -74,28 +74,28 @@ def addEmployeeHours():
         return
     if int(monHours) > 24:
         print("Cannot enter more than 24 hours in one day")
-        return
+        monHours = 0
     tueHours = input("Enter the number of hours worked on Tuesday: ")
     if tueHours == "":
-        return
+        tueHours = 0
     if int(tueHours) > 24:
         print("Cannot enter more than 24 hours in one day")
         return
     wedHours = input("Enter the number of hours worked on Wednesday: ")
     if wedHours == "":
-        return
+        wedHours = 0
     if int(wedHours) > 24:
         print("Cannot enter more than 24 hours in one day")
         return
     thurHours = input("Enter the number of hours worked on Thursday: ")
     if thurHours == "":
-        return
+        thurHours = 0
     if int(thurHours) > 24:
         print("Cannot enter more than 24 hours in one day")
         return
     friHours = input("Enter the number of hours worked on Friday: ")
     if friHours == "":
-        return
+        friHours = 0
     if int(friHours) > 24:
         print("Cannot enter more than 24 hours in one day")
         return
@@ -157,10 +157,10 @@ def reportAll():
         reader = csv.reader(report)
         for row in reader:
             if len(row) > 0:
-                dataList.append(row)
-                for i in dataList:
-                    print(dataList[0][0] + ": " + dataList[0][1] + " Hours")
-                    print()
+                print(styleGuide[3])
+                print(row[0] + ": " + row[1] + " Hours")
+                if (int(row[1]) > 41):
+                    print("Employee worked more than 40 hours")
 
 # Main Menu
 print(styleGuide[0]) # Show program title
@@ -181,19 +181,12 @@ while (choice !=3): # Display menu of options
         except:
             print("An error occurred. Please try again")
     elif (choice == 2):
-        try:
-            subChoice = int(input("Please select one of the following options to continue\n1. Generate report for single employee\n2. Generate report for all employees\n"))
-            if subChoice == 1: # Generate report for single employee
-                try:
-                    showHoursWorkedReport()
-                except:
-                    print("An error occurred. Please try again")
-            elif subChoice == 2: # Generate report for all employees
-                try:
-                    reportAll()
-                except:
-                    print("An error occurred. Please try again")
-        except:
-            print("An error occurred. Please try again")
+        subChoice = int(input("Please select one of the following options to continue\n1. Generate report for single employee\n2. Generate report for all employees\n"))
+        if subChoice == 1: # Generate report for single employee:
+            showHoursWorkedReport()
+        elif subChoice == 2: # Generate report for all employees
+            reportAll()
+    elif (choice == 3): # Exit program
+        print("Exiting program")
     else:
         print("Please input only one of the 3 options. (1, 2 or 3)")

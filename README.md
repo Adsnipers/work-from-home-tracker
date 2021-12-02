@@ -8,9 +8,8 @@ worked from Monday to Friday, and then calculate the total weekly hours worked f
 
 ## Contact
 ### Discord
-Join my discord server to get in contact me and join an amazing community
 
-[Join Our Discord](https://discord.io/adsnipers)
+[Join The Discord](https://discord.io/adsnipers)
 
 ## Email
 For buisness enquiries or other professional enquiries feel free to contact the creator of SniperBot (Adsnipers) via Email
